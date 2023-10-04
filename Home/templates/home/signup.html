@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  {%load static%}
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>HealthViz1</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'home/assets/bootstrap/css/bootstrap.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'home/assets/css/Aldrich.css' %}" />
+    <link rel="stylesheet" href="{% static 'home/assets/css/Inter.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'home/assets/css/Login-Form-Basic-icons.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'home/assets/css/Signup-page-with-overlay.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'home/assets/css/TD-BS4-Simple-Contact-Form-styles.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'home/assets/css/TD-BS4-Simple-Contact-Form.css' %}"
+    />
+  </head>
+
+  <body
+    style="background: linear-gradient(180deg, #150f28 0%, rgb(83, 54, 92) 58%)"
+  >
+    <!-- Start: Navbar Centered Links -->
+    {%include 'home/nav.html'%}
+    <!-- End: Navbar Centered Links -->
+    <section>
+      <h1 class="text-center" style="padding-top: 20px; padding-bottom: 12px">
+        Signup&nbsp;
+      </h1>
+    </section>
+    <!-- Start: TD-BS4 Simple Contact Form -->
+    <section class="td-form">
+      <div class="row td-form-wrapper">
+        <div class="col td-glass">
+          <!-- Start: bwc-simple-contact-form -->
+          <form class="td-form-wrapper" method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label class="form-label" for="first_name">First Name *</label>
+                <div class="d-flex">
+                    <i class="icon ion-person align-self-center"></i>
+                    <input
+                        class="form-control d-flex"
+                        type="text"
+                        autocomplete="off"
+                        name="first_name"
+                        required=""
+                        id="first_name"
+                        style="width: 70%"
+                    />
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label class="form-label" for="last_name">Last Name *</label>
+                <div class="d-flex">
+                    <i class="icon ion-person align-self-center"></i>
+                    <input
+                        class="form-control d-flex"
+                        type="text"
+                        autocomplete="off"
+                        name="last_name"
+                        required=""
+                        id="last_name"
+                        style="width: 70%"
+                    />
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label class="form-label">Gender *</label>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input
+                        type="radio"
+                        id="btnradio1"
+                        class="btn-check"
+                        name="gender"
+                        value="Male"
+                        autocomplete="off"
+                        checked=""
+                    />
+                    <label class="form-label btn btn-outline-primary" for="btnradio1">Male</label>
+                    <input
+                        type="radio"
+                        id="btnradio2"
+                        class="btn-check"
+                        name="gender"
+                        value="Female"
+                        autocomplete="off"
+                    />
+                    <label class="form-label btn btn-outline-primary" for="btnradio2">Female</label>
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label class="form-label" for="email">Email Address *</label>
+                <div class="d-flex">
+                    <i class="icon ion-ios-email align-self-center"></i>
+                    <input
+                        class="form-control"
+                        type="email"
+                        autocomplete="off"
+                        name="email"
+                        required=""
+                        placeholder="services@treedax.com"
+                        id="email"
+                        style="width: 70%"
+                    />
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label class="form-label" for="medical_info">Medical Info (if any):</label>
+                <div class="d-flex td-input-container">
+                    <i class="icon ion-ios-information align-self-center"></i>
+                    <input
+                        class="form-control"
+                        type="text"
+                        autocomplete="off"
+                        name="medical_info"
+                        id="medical_info"
+                        style="width: 70%"
+                    />
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <button class="btn btn-dark float-end" type="submit">Submit</button>
+            </div>
+        </form>
+        
+          <!-- End: bwc-simple-contact-form -->
+        </div>
+      </div>
+    </section>
+    <!-- End: TD-BS4 Simple Contact Form -->
+    <!-- Start: Footer Dark -->
+    <footer class="text-center bg-dark">
+      <div class="container text-white py-4 py-lg-5">
+        <ul class="list-inline">
+          <li class="list-inline-item me-4">
+            <a class="link-light" href="#">Machine Learning</a>
+          </li>
+          <li class="list-inline-item me-4">
+            <a class="link-light" href="#">Deep Learning</a>
+          </li>
+          <li class="list-inline-item">
+            <a class="link-light" href="#">Artificial Intelligence</a>
+          </li>
+        </ul>
+        <p class="text-white mb-0">Copyright © 2023 DIAGNO-VISION</p>
+      </div>
+    </footer>
+    <!-- End: Footer Dark -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'home/assets/js/bs-init.js' %}"></script>
+    <script src="{% static 'home/assets/js/bold-and-dark.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>
+  </body>
+</html>

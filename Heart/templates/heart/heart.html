@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Detection</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+</head>
+<body style="background-color: #f8f9fa;">
+    <div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-header bg-danger text-white">
+                <h1 class="text-center">Heart Disease Detection</h1>
+            </div>
+            <div class="card-body">
+                <form method="post" id="heartDiseaseForm">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="first_name">First Name</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="phone_no">Phone No.</label>
+                            <input type="tel" class="form-control" id="phone_no" name="phone_no" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="gender">Gender</label>
+                            <select class="form-control" id="gender" name="gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="old_peak">Old Peak</label>
+                            <input type="number" class="form-control" id="old_peak" name="old_peak" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="max_heart_rate">Max. Heart Rate Achieved</label>
+                            <input type="number" class="form-control" id="max_heart_rate" name="max_heart_rate" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exercise_induces_angina">Exercise Induces Angina</label>
+                            <select class="form-control" id="exercise_induces_angina" name="exercise_induces_angina">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="num_major_vessels">No. of Major Vessels</label>
+                            <input type="number" class="form-control" id="num_major_vessels" name="num_major_vessels" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="chest_pain_type">Type of Chest Pain</label>
+                            <select class="form-control" id="chest_pain_type" name="chest_pain_type">
+                                <option value="Typical Angina">Typical Angina</option>
+                                <option value="Atypical Angina">Atypical Angina</option>
+                                <option value="Non-Anginal Pain">Non-Anginal Pain</option>
+                                <option value="Asymptomatic">Asymptomatic</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="age">Age</label>
+                            <input type="number" class="form-control" id="age" name="age" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="thal">Thal</label>
+                            <input type="text" class="form-control" id="thal" name="thal" required>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm btn-block" onclick="submitForm()">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery (for form validation) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script>
+        function submitForm() {
+            // You can add your form submission logic here
+            // For now, let's show a SweetAlert pop-up as an example
+            Swal.fire({
+                title: 'Success!',
+                text: 'Form submitted successfully.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        }
+    </script>
+</body>
+</html>

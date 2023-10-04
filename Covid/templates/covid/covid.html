@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Covid-19 Detection</title>
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- SweetAlert CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css"
+    />
+  </head>
+  <body style="background-color: #f8f9fa">
+    <div class="container mt-5">
+      <div class="card shadow">
+        <div class="card-header bg-warning text-white">
+          <h1 class="text-center">Covid-19 Detection</h1>
+        </div>
+        <div class="card-body">
+          <form
+            method="post"
+            id="covidDetectionForm"
+            action="{% url 'store_covid_data' %}"
+            enctype="multipart/form-data"
+          >
+            {% csrf_token %}
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="first_name">First Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="first_name"
+                  name="first_name"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="last_name">Last Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="last_name"
+                  name="last_name"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="phone_no">Phone No.</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">+1</span>
+                  </div>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="phone_no"
+                    name="phone_no"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender" name="gender">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="age">Age</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="age"
+                  name="age"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="chest_scan">Upload Your Chest Scan (Image)</label>
+                <input
+                  type="file"
+                  class="form-control-file"
+                  id="chest_scan"
+                  name="chest_scan"
+                  accept="image/*"
+                  required
+                />
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn btn-warning btn-sm btn-block"
+              onclick="submitForm()"
+            >
+              Submit
+            </button>
+          </form>
+          <div id="resultContainer"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery (for form validation) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script>
+     function submitForm() {
+    // Get the form element
+    var form = document.getElementById("covidDetectionForm");
+
+    // Create a FormData object to serialize the form data
+    var formData = new FormData(form);
+
+    // Send a POST request to your Django view with the form data
+    fetch("{% url 'store_covid_data' %}", {
+        method: "POST",
+        body: formData,
+        headers: {
+            "X-CSRFToken": "{{ csrf_token }}",
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Show the result in the resultContainer div
+            var resultContainer = document.getElementById("resultContainer");
+            resultContainer.innerHTML = `
+                <div class="alert alert-success">
+                    <strong>Success!</strong> ${data.message}
+                </div>
+            `;
+        } else {
+            // Show an error message
+            var resultContainer = document.getElementById("resultContainer");
+            resultContainer.innerHTML = `
+                <div class="alert alert-danger">
+                    <strong>Error!</strong> ${data.message}
+                </div>
+            `;
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+}
+
+    </script>
+  </body>
+</html>
