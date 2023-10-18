@@ -9,24 +9,28 @@
     <h1>Diabetes Prediction Result</h1>
 
     <h2>User Information</h2>
-    <!-- <ul>
-        <li><strong>First Name:</strong> {{ form.cleaned_data.first_name }}</li>
-        <li><strong>Last Name:</strong> {{ form.cleaned_data.last_name }}</li>
-        <li><strong>Phone No.:</strong> {{ form.cleaned_data.phone_no }}</li>
-        <li><strong>Email:</strong> {{ form.cleaned_data.email }}</li>
-        <li><strong>Gender:</strong> {{ form.cleaned_data.gender }}</li>
-        <li><strong>No. of Pregnancies:</strong> {{ form.cleaned_data.pregnancies }}</li>
-        <li><strong>Glucose Concentration:</strong> {{ form.cleaned_data.glucose }}</li>
-        <li><strong>Blood Pressure:</strong> {{ form.cleaned_data.blood_pressure }}</li>
-        <li><strong>Skin Thickness:</strong> {{ form.cleaned_data.skin_thickness }}</li>
-        <li><strong>Insulin:</strong> {{ form.cleaned_data.insulin }}</li>
-        <li><strong>BMI (Body Mass Index):</strong> {{ form.cleaned_data.bmi }}</li>
-        <li><strong>Diabetes Pedigree Function:</strong> {{ form.cleaned_data.diabetes_pedigree }}</li>
-        <li><strong>Age:</strong> {{ form.cleaned_data.age }}</li>
-    </ul> -->
+    <ul>
+        <li><strong>First Name:</strong> {{ form.first_name }}</li>
+        <li><strong>Last Name:</strong> {{ form.last_name }}</li>
+        <li><strong>Phone No.:</strong> {{ form.phone_no }}</li>
+        <li><strong>Email:</strong> {{ form.email }}</li>
+        <li><strong>Gender:</strong> {{ form.gender }}</li>
+        <li><strong>No. of Pregnancies:</strong> {{ form.pregnancies }}</li>
+        <li><strong>Glucose Concentration:</strong> {{ form.glucose }}</li>
+        <li><strong>Blood Pressure:</strong> {{ form.blood_pressure }}</li>
+        <li><strong>Skin Thickness:</strong> {{ form.skin_thickness }}</li>
+        <li><strong>Insulin:</strong> {{ form.insulin }}</li>
+        <li><strong>BMI (Body Mass Index):</strong> {{ form.bmi }}</li>
+        <li><strong>Diabetes Pedigree Function:</strong> {{ form.diabetes_pedigree }}</li>
+        <li><strong>Age:</strong> {{ form.age }}</li>
+    </ul>
 
     <h2>Diabetes Prediction Result</h2>
-    <p>The prediction result: {{ prediction_result }}</p>
+    {% if prediction_result == 1 %}
+    <p>You have diabetes.</p>
+    {% else %}
+    <p>You do not have diabetes.</p>
+    {% endif %}
 
     <!-- You can add more content and styling as needed -->
 </body>

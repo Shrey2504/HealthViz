@@ -1,4 +1,5 @@
 import os
+from django.http import HttpResponse
 import joblib
 from django.conf import settings
 from django.shortcuts import render, redirect
@@ -44,13 +45,21 @@ def diabetes_form(request):
             # Make predictions using the loaded model
             prediction_result = loaded_model.predict([user_data])[0]
 
-            # Redirect to the 'result' view with the form data and prediction result
-            return redirect('result', prediction_result=prediction_result, form=cleaned_data)
+            # Redirect to the 'result' view with the prediction result as a URL parameter
+            return render(request,'diabetes/result.html', {'form': form, 'prediction_result': prediction_result})
 
     else:
         form = DiabetesDetectionForm()
 
     return render(request, 'diabetes/diabetes.html', {'form': form})
 
-def result(request, prediction_result):
-    return render(request, 'diabetes/result.html', {'prediction_result': prediction_result})
+def result(request):
+    # Retrieve the form data and prediction result from session variables
+    form_data = request.session.get('form_data', {})
+    prediction_result = request.session.get('prediction_result', None)
+
+    if not prediction_result:
+        # Handle the case where there is no prediction result
+        return HttpResponse("Prediction result not available")
+
+    return render(request, 'diabetes/result.html', {'form_data': form_data, 'prediction_result': prediction_result})
