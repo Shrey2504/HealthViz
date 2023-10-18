@@ -16,54 +16,47 @@
                 <h1 class="text-center">Lung Cancer Detection</h1>
             </div>
             <div class="card-body">
-                <form method="post" id="lungCancerDetectionForm">
+                <form method="post" id="lungCancerDetectionForm" enctype="multipart/form-data" action="{% url 'lungcancer_detection' %}">
                     {% csrf_token %}
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="first_name">First Name</label>
-                            <input type="text" class="form-control" id="first_name" name="first_name" required>
+                            <label for="{{ form.first_name.id_for_label }}">First Name</label>
+                            {{ form.first_name }}
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="last_name">Last Name</label>
-                            <input type="text" class="form-control" id="last_name" name="last_name" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="phone_no">Phone No.</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">+1</span>
-                                </div>
-                                <input type="tel" class="form-control" id="phone_no" name="phone_no" required>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <label for="{{ form.last_name.id_for_label }}">Last Name</label>
+                            {{ form.last_name }}
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="gender">Gender</label>
-                            <select class="form-control" id="gender" name="gender">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select>
+                            <label for="{{ form.phone_no.id_for_label }}">Phone No.</label>
+                            {{ form.phone_no }}
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="age">Age</label>
-                            <input type="number" class="form-control" id="age" name="age" required>
+                            <label for="{{ form.email.id_for_label }}">Email</label>
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="{{ form.gender.id_for_label }}">Gender</label>
+                            {{ form.gender }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="{{ form.age.id_for_label }}">Age</label>
+                            {{ form.age }}
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="ct_scan">Upload Your CT Scan (Image)</label>
-                            <input type="file" class="form-control-file" id="ct_scan" name="ct_scan" accept="image/*" required>
+                            <label for="{{ form.ct_scan.id_for_label }}">Upload Your CT Scan (Image)</label>
+                            {{ form.ct_scan }}
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary btn-sm btn-block" onclick="submitForm()">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-sm btn-block">Submit</button>
                 </form>
+                
             </div>
         </div>
     </div>
