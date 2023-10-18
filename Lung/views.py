@@ -16,4 +16,4 @@ def lung_cancer_detection(request):
     return render(request, 'Lung/lung.html', {'form': form})
 
 def result(request):
-    return render(request, 'result.html')
+    return render(request, 'Lung/result.html')
