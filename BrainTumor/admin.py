@@ -1,3 +1,4 @@
 from django.contrib import admin
+from .models import BrainTumor  # Import the Patient model from your models.py
 
-# Register your models here.
+admin.site.register(BrainTumor)

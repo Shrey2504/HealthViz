@@ -1,92 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brain Tumor Detection</title>
-    <!-- Include Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- SweetAlert CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+    <title>Brain Tumor Form</title>
 </head>
-<body style="background-color: #f8f9fa;">
-    <div class="container mt-5">
-        <div class="card shadow">
-            <div class="card-header bg-success text-white">
-                <h1 class="text-center">Brain Tumor Detection</h1>
-            </div>
-            <div class="card-body">
-                <form method="post" id="brainTumorForm">
-                    {% csrf_token %}
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="first_name">First Name</label>
-                            <input type="text" class="form-control" id="first_name" name="first_name" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="last_name">Last Name</label>
-                            <input type="text" class="form-control" id="last_name" name="last_name" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="phone_no">Phone No.</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">+1</span>
-                                </div>
-                                <input type="tel" class="form-control" id="phone_no" name="phone_no" required>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="gender">Gender</label>
-                            <select class="form-control" id="gender" name="gender">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="age">Age</label>
-                            <input type="number" class="form-control" id="age" name="age" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="brain_mri">Upload Your Brain MRI (Image)</label>
-                            <input type="file" class="form-control-file" id="brain_mri" name="brain_mri" accept="image/*" required>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-success btn-sm btn-block" onclick="submitForm()">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Include Bootstrap JS and jQuery (for form validation) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-    <!-- SweetAlert JS -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-    <script>
-        function submitForm() {
-            // You can add your form submission logic here
-            // For now, let's show a SweetAlert pop-up as an example
-            Swal.fire({
-                title: 'Success!',
-                text: 'Form submitted successfully.',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            });
-        }
-    </script>
+<body>
+    <h1>Brain Tumor Evaluation</h1>
+    <form method="post" id="brainTumorForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success btn-sm btn-block">Submit</button>
+    </form>
 </body>
 </html>

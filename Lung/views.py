@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import LungCancer
 from .forms import LungCancerDetectionForm
 
+
 def lung_cancer_detection(request):
     print('Hello')
     if request.method == 'POST':
