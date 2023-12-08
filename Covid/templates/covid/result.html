@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID Detection Result</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- SweetAlert CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css"
+    />
+</head>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-md sticky-top py-3" id="mainNav-1" style="background: rgb(0, 0, 0); height: 85.8px">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/"><span>DIAGNO-VISION</span></a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2">
+                <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-2">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'home'%}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{%url 'about'%}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'diagnosis'%}">Diagnose</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      </nav>
+      
+    <h1>COVID Detection Result</h1>
+
+    <div class="user-info">
+        <h2>User Information</h2>
+        <p><strong>First Name:</strong> {{ user_data.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ user_data.last_name }}</p>
+        <p><strong>Phone No.:</strong> {{ user_data.phone_no }}</p>
+        <p><strong>Email:</strong> {{ user_data.email }}</p>
+        <p><strong>Gender:</strong> {{ user_data.gender }}</p>
+        <p><strong>Age:</strong> {{ user_data.age }}</p>
+    </div>
+
+    <div class="result">
+        <h2>COVID-19 Detection Result</h2>
+        <p><strong>Result:</strong> {{ result }}</p>
+    </div>
+
+    <!-- You can add additional content or display the image or prediction details here if needed -->
+</body>
+</html>

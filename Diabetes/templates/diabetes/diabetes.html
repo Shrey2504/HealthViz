@@ -16,6 +16,28 @@
     />
   </head>
   <body style="background-color: #f8f9fa">
+    <nav class="navbar navbar-dark navbar-expand-md sticky-top py-3" id="mainNav-1" style="background: rgb(0, 0, 0); height: 85.8px">
+      <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="/"><span>DIAGNO-VISION</span></a>
+          <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2">
+              <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navcol-2">
+              <ul class="navbar-nav mx-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="{%url 'home'%}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" href="{%url 'about'%}">About</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{%url 'diagnosis'%}">Diagnose</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+    </nav>
+    
     <div class="container mt-5">
       <div class="card shadow">
         <div class="card-header bg-primary text-white">

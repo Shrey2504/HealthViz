@@ -2,8 +2,6 @@ import os
 from django.shortcuts import render, redirect
 from .forms import BrainTumorForm
 from .models import BrainTumor
-
-# Import necessary libraries
 import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
@@ -16,12 +14,12 @@ import matplotlib.pyplot as plt
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Define the path to the model file relative to the base directory
-MODEL_FILE = os.path.join(BASE_DIR,'BrainTumor', 'machinelearning', 'brain_tumor.h5')
+MODEL_FILE = os.path.join(BASE_DIR,'BrainTumor', 'machinelearning', 'braintumor.h5')
 
 # Load the brain tumor detection model
 model = load_model(MODEL_FILE)
 
-IMG_SIZE = (240, 240)
+img_size = (224,224)
 def preprocess_imgs(set_name, img_size):
     """
     Resize and apply VGG-15 preprocessing
@@ -84,7 +82,7 @@ def brain_tumor_evaluation(request):
             img = cv2.imread(brainTumor.brain_mri.path)
             img = crop_imgs([img])
             img = img.reshape(img.shape[1:])
-            img = preprocess_imgs([img], IMG_SIZE)
+            img = preprocess_imgs([img], img_size)
 
             pred = model.predict(img)
 

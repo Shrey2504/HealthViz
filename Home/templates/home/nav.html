@@ -58,25 +58,15 @@ style="background: rgb(0, 0, 0); height: 85.8px"
       <div class="collapse navbar-collapse" id="navcol-2">
           <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                  <a class="nav-link" href="index.html">Home</a>
+                  <a class="nav-link" href="{%url 'home'%}">Home</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link active" href="about.html">About</a>
+                  <a class="nav-link active" href="{%url 'about'%}">About</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="diagnosis.html">Diagnose</a>
+                  <a class="nav-link" href="{%url 'diagnosis'%}">Diagnose</a>
               </li>
           </ul>
-          {% if user.is_authenticated %}
-              <!-- User is logged in, show the Log Out option -->
-              <a href="{% url 'logout' %}" style="padding-right: 18px; color: rgb(128, 0, 255); font-weight: bold;">Log Out</a>
-          {% else %}
-              <!-- User is not logged in, show Log In and Sign Up options -->
-              <a href="{% url 'login' %}" style="padding-right: 18px; color: rgb(128, 0, 255); font-weight: bold;">Log In</a>
-              <section style="padding-left: 27px">
-                  <a class="btn btn-primary btn-sm shadow" role="button" href="{% url 'signup' %}">Sign up</a>
-              </section>
-          {% endif %}
       </div>
   </div>
 </nav>

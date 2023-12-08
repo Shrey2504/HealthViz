@@ -1,1 +1,33 @@
-<h1>result</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lung Cancer Detection Result</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- SweetAlert CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css"
+    />
+</head>
+<body>
+    <h1>Lung Cancer Detection Result</h1>
+
+    <div>
+        <h2>User Information</h2>
+        <p><strong>First Name:</strong> {{ user_data.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ user_data.last_name }}</p>
+        <p><strong>Phone No.:</strong> {{ user_data.phone_no }}</p>
+        <p><strong>Email:</strong> {{ user_data.email }}</p>
+        <p><strong>Gender:</strong> {{ user_data.gender }}</p>
+        <p><strong>Age:</strong> {{ user_data.age }}</p>
+    </div>
+
+    <div>
+        <h2>Result</h2>
+        <p>{{ result }}</p>
+    </div>
+</body>
+</html>

@@ -16,107 +16,73 @@
     />
   </head>
   <body style="background-color: #f8f9fa">
+    <nav class="navbar navbar-dark navbar-expand-md sticky-top py-3" id="mainNav-1" style="background: rgb(0, 0, 0); height: 85.8px">
+      <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="/"><span>DIAGNO-VISION</span></a>
+          <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2">
+              <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navcol-2">
+              <ul class="navbar-nav mx-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="{%url 'home'%}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" href="{%url 'about'%}">About</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{%url 'diagnosis'%}">Diagnose</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+    </nav>
+    
     <div class="container mt-5">
       <div class="card shadow">
         <div class="card-header bg-warning text-white">
           <h1 class="text-center">Covid-19 Detection</h1>
         </div>
         <div class="card-body">
-          <form
-            method="post"
-            id="covidDetectionForm"
-            action="{% url 'store_covid_data' %}"
-            enctype="multipart/form-data"
-          >
+          <form method="post" id="covidDetectionForm" action="{% url 'store_covid_data' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="first_name">First Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="first_name"
-                  name="first_name"
-                  required
-                />
+                {{ form.first_name }}
               </div>
               <div class="form-group col-md-6">
                 <label for="last_name">Last Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="last_name"
-                  name="last_name"
-                  required
-                />
+                {{ form.last_name }}
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="phone_no">Phone No.</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">+1</span>
-                  </div>
-                  <input
-                    type="tel"
-                    class="form-control"
-                    id="phone_no"
-                    name="phone_no"
-                    required
-                  />
-                </div>
+                {{ form.phone_no }}
               </div>
               <div class="form-group col-md-6">
                 <label for="email">Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  name="email"
-                  required
-                />
+                {{ form.email }}
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="gender">Gender</label>
-                <select class="form-control" id="gender" name="gender">
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
+                {{ form.gender }}
               </div>
               <div class="form-group col-md-6">
                 <label for="age">Age</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="age"
-                  name="age"
-                  required
-                />
+                {{ form.age }}
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-12">
                 <label for="chest_scan">Upload Your Chest Scan (Image)</label>
-                <input
-                  type="file"
-                  class="form-control-file"
-                  id="chest_scan"
-                  name="chest_scan"
-                  accept="image/*"
-                  required
-                />
+                {{ form.chest_scan }}
               </div>
             </div>
-            <button
-              type="button"
-              class="btn btn-warning btn-sm btn-block"
-              onclick="submitForm()"
-            >
-              Submit
-            </button>
+            <button type="submit" class="btn btn-warning btn-sm btn-block">Submit</button>
           </form>
           <div id="resultContainer"></div>
         </div>

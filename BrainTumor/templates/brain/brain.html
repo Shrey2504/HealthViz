@@ -2,13 +2,96 @@
 <html>
 <head>
     <title>Brain Tumor Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Brain Tumor Evaluation</h1>
-    <form method="post" id="brainTumorForm" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-success btn-sm btn-block">Submit</button>
-    </form>
+    <nav class="navbar navbar-dark navbar-expand-md sticky-top py-3" id="mainNav-1" style="background: rgb(0, 0, 0); height: 85.8px">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/"><span>DIAGNO-VISION</span></a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2">
+                <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-2">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'home'%}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{%url 'about'%}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'diagnosis'%}">Diagnose</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      </nav>
+      
+    <div class="container">
+        <h1 class="mt-4">Brain Tumor Evaluation</h1>
+        <form method="post" id="brainTumorForm" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            
+            <div class="form-group row">
+                <label for="{{ form.first_name.id_for_label }}" class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-10">
+                    {{ form.first_name }}
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="{{ form.last_name.id_for_label }}" class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-10">
+                    {{ form.last_name }}
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="{{ form.phone_no.id_for_label }}" class="col-sm-2 col-form-label">Phone No.</label>
+                <div class="col-sm-10">
+                    {{ form.phone_no }}
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="{{ form.email.id_for_label }}" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    {{ form.email }}
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="{{ form.gender.id_for_label }}" class="col-sm-2 col-form-label">Gender</label>
+                <div class="col-sm-10">
+                    {{ form.gender }}
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="{{ form.age.id_for_label }}" class="col-sm-2 col-form-label">Age</label>
+                <div class="col-sm-10">
+                    {{ form.age }}
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="{{ form.brain_mri.id_for_label }}" class="col-sm-2 col-form-label">Upload Your Brain MRI (Image)</label>
+                <div class="col-sm-10">
+                    {{ form.brain_mri }}
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-success btn-sm btn-block">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
